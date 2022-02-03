@@ -47,6 +47,7 @@
     <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatTSqlWarningsAsErrors>True</TreatTSqlWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
@@ -68,6 +69,8 @@
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="dbo\User Defined Types\" />
     <Folder Include="SalesLT\XMLSchemaCollections\" />
+    <Folder Include="SalesLT\Functions" />
+    <Folder Include="SalesLT\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\ErrorLog.sql" />
@@ -100,5 +103,12 @@
     <Build Include="SalesLT\XMLSchemaCollections\ProductDescriptionSchemaCollection.sql" />
     <Build Include="ExtendedProperties.sql" />
     <Build Include="dbo\Stored Procedures\NewTestProc.sql" />
+    <Build Include="dbo\User Defined Types\Continent.sql" />
+    <Build Include="SalesLT\Functions\GetAddressContinent.sql" />
+    <Build Include="SalesLT\Stored Procedures\TestProc.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AdventureWorksLT.publish.xml" />
+    <None Include="AdventureWorksLT_DockerImage.publish.xml" />
   </ItemGroup>
 </Project>
