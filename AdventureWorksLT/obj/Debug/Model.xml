@@ -44,6 +44,22 @@
 				</Entry>
 			</Relationship>
 		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA['North America']]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[SalesLT].[Address]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[SalesLT].[Address].[ContinentName]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
+		</Element>
 		<Element Type="SqlUserDefinedDataType" Name="[dbo].[AccountNumber]">
 			<Property Name="Length" Value="15" />
 			<Relationship Name="Schema">
@@ -124,13 +140,27 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
+						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
 					</Element>
 				</Entry>
 			</Relationship>
 			<Relationship Name="Schema">
 				<Entry>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlUserDefinedDataType" Name="[dbo].[Continent]">
+			<Property Name="IsNullable" Value="False" />
+			<Property Name="Length" Value="200" />
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Type">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[varchar]" />
 				</Entry>
 			</Relationship>
 		</Element>
@@ -148,7 +178,7 @@
 					<References Name="[dbo].[BuildVersion].[ModifiedDate]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="4" />
+			<AttachedAnnotation Disambiguator="5" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[dbo].[DF_ErrorLog_ErrorTime]">
 			<Property Name="DefaultExpressionScript">
@@ -164,7 +194,7 @@
 					<References Name="[dbo].[ErrorLog].[ErrorTime]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[ErrorLog]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -200,7 +230,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="5" />
+						<AttachedAnnotation Disambiguator="6" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -319,7 +349,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
 		</Element>
 		<Element Type="SqlUserDefinedDataType" Name="[dbo].[Flag]">
 			<Property Name="IsNullable" Value="False" />
@@ -403,7 +433,7 @@
 					<References Name="[dbo].[ErrorLog]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="6" />
+			<AttachedAnnotation Disambiguator="7" />
 		</Element>
 		<Element Type="SqlMultiStatementTableValuedFunction" Name="[dbo].[ufnGetAllCategories]">
 			<Property Name="ReturnTableVariable" Value="@retCategoryInformation" />
@@ -1063,7 +1093,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
+						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1080,22 +1110,24 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
+						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[SalesLT].[Address].[CustomColumn]">
+					<Element Type="SqlSimpleColumn" Name="[SalesLT].[Address].[ContinentName]">
+						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
 									<Relationship Name="Type">
 										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
+											<References Name="[dbo].[Continent]" />
 										</Entry>
 									</Relationship>
 								</Element>
 							</Entry>
 						</Relationship>
+						<AttachedAnnotation Disambiguator="4" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -1104,8 +1136,8 @@ END;]]></Value>
 					<References Name="[SalesLT]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
 		</Element>
 		<Element Type="SqlIndex" Name="[SalesLT].[Address].[IX_Address_AddressLine1_AddressLine2_City_StateProvince_PostalCode_CountryRegion]">
 			<Relationship Name="ColumnSpecifications">
@@ -1205,7 +1237,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Address]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="10" />
+			<AttachedAnnotation Disambiguator="11" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_Customer_rowguid]">
 			<Relationship Name="ColumnSpecifications">
@@ -1224,7 +1256,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Customer]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_CustomerAddress_rowguid]">
 			<Relationship Name="ColumnSpecifications">
@@ -1243,7 +1275,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[CustomerAddress]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_Product_Name]">
 			<Relationship Name="ColumnSpecifications">
@@ -1262,7 +1294,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Product]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_Product_ProductNumber]">
 			<Relationship Name="ColumnSpecifications">
@@ -1281,7 +1313,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Product]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_Product_rowguid]">
 			<Relationship Name="ColumnSpecifications">
@@ -1300,7 +1332,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Product]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_ProductCategory_Name]">
 			<Relationship Name="ColumnSpecifications">
@@ -1319,7 +1351,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductCategory]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_ProductCategory_rowguid]">
 			<Relationship Name="ColumnSpecifications">
@@ -1338,7 +1370,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductCategory]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_ProductDescription_rowguid]">
 			<Relationship Name="ColumnSpecifications">
@@ -1357,7 +1389,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductDescription]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_ProductModel_Name]">
 			<Relationship Name="ColumnSpecifications">
@@ -1376,7 +1408,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductModel]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="20" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_ProductModel_rowguid]">
 			<Relationship Name="ColumnSpecifications">
@@ -1395,7 +1427,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductModel]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="20" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="21" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_ProductModelProductDescription_rowguid]">
 			<Relationship Name="ColumnSpecifications">
@@ -1414,7 +1446,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductModelProductDescription]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="21" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="22" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_SalesOrderDetail_rowguid]">
 			<Relationship Name="ColumnSpecifications">
@@ -1433,7 +1465,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderDetail]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="22" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="23" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_SalesOrderHeader_rowguid]">
 			<Relationship Name="ColumnSpecifications">
@@ -1452,7 +1484,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="23" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="24" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[SalesLT].[AK_SalesOrderHeader_SalesOrderNumber]">
 			<Relationship Name="ColumnSpecifications">
@@ -1471,7 +1503,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="24" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="25" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[SalesLT].[CK_Product_ListPrice]">
 			<Property Name="CheckExpressionScript">
@@ -1487,7 +1519,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Product]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="25" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="26" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[SalesLT].[CK_Product_SellEndDate]">
 			<Property Name="CheckExpressionScript">
@@ -1506,7 +1538,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Product]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="26" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="27" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[SalesLT].[CK_Product_StandardCost]">
 			<Property Name="CheckExpressionScript">
@@ -1522,7 +1554,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Product]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="27" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="28" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[SalesLT].[CK_Product_Weight]">
 			<Property Name="CheckExpressionScript">
@@ -1538,7 +1570,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Product]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="28" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="29" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[SalesLT].[CK_SalesOrderDetail_OrderQty]">
 			<Property Name="CheckExpressionScript">
@@ -1554,7 +1586,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderDetail]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="29" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="30" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[SalesLT].[CK_SalesOrderDetail_UnitPrice]">
 			<Property Name="CheckExpressionScript">
@@ -1570,7 +1602,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderDetail]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="30" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="31" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[SalesLT].[CK_SalesOrderDetail_UnitPriceDiscount]">
 			<Property Name="CheckExpressionScript">
@@ -1586,7 +1618,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderDetail]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="31" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="32" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[SalesLT].[CK_SalesOrderHeader_DueDate]">
 			<Property Name="CheckExpressionScript">
@@ -1605,7 +1637,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="32" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="33" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[SalesLT].[CK_SalesOrderHeader_Freight]">
 			<Property Name="CheckExpressionScript">
@@ -1621,7 +1653,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="33" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="34" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[SalesLT].[CK_SalesOrderHeader_ShipDate]">
 			<Property Name="CheckExpressionScript">
@@ -1640,7 +1672,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="34" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="35" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[SalesLT].[CK_SalesOrderHeader_Status]">
 			<Property Name="CheckExpressionScript">
@@ -1656,7 +1688,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="35" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="36" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[SalesLT].[CK_SalesOrderHeader_SubTotal]">
 			<Property Name="CheckExpressionScript">
@@ -1672,7 +1704,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="36" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="37" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[SalesLT].[CK_SalesOrderHeader_TaxAmt]">
 			<Property Name="CheckExpressionScript">
@@ -1688,7 +1720,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="37" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="38" />
 		</Element>
 		<Element Type="SqlTable" Name="[SalesLT].[Customer]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1725,7 +1757,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="38" />
+						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="39" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1919,7 +1951,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="39" />
+						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="40" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1936,7 +1968,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="40" />
+						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="41" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -1945,8 +1977,8 @@ END;]]></Value>
 					<References Name="[SalesLT]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="41" />
-			<AttachedAnnotation Disambiguator="11" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="42" />
+			<AttachedAnnotation Disambiguator="12" />
 		</Element>
 		<Element Type="SqlIndex" Name="[SalesLT].[Customer].[IX_Customer_EmailAddress]">
 			<Relationship Name="ColumnSpecifications">
@@ -2032,7 +2064,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="42" />
+						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="43" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -2049,7 +2081,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="43" />
+						<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="44" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -2058,10 +2090,10 @@ END;]]></Value>
 					<References Name="[SalesLT]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="44" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="45" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="46" />
-			<AttachedAnnotation Disambiguator="12" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="47" />
+			<AttachedAnnotation Disambiguator="13" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_Address_ModifiedDate]">
 			<Property Name="DefaultExpressionScript">
@@ -2077,7 +2109,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Address].[ModifiedDate]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="8" />
+			<AttachedAnnotation Disambiguator="9" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_Address_rowguid]">
 			<Property Name="DefaultExpressionScript">
@@ -2093,7 +2125,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Address].[rowguid]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="7" />
+			<AttachedAnnotation Disambiguator="8" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_Customer_ModifiedDate]">
 			<Property Name="DefaultExpressionScript">
@@ -2109,7 +2141,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Customer].[ModifiedDate]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="40" />
+			<AttachedAnnotation Disambiguator="41" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_Customer_NameStyle]">
 			<Property Name="DefaultExpressionScript">
@@ -2125,7 +2157,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Customer].[NameStyle]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="38" />
+			<AttachedAnnotation Disambiguator="39" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_Customer_rowguid]">
 			<Property Name="DefaultExpressionScript">
@@ -2141,7 +2173,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Customer].[rowguid]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="39" />
+			<AttachedAnnotation Disambiguator="40" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_CustomerAddress_ModifiedDate]">
 			<Property Name="DefaultExpressionScript">
@@ -2157,7 +2189,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[CustomerAddress].[ModifiedDate]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="43" />
+			<AttachedAnnotation Disambiguator="44" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_CustomerAddress_rowguid]">
 			<Property Name="DefaultExpressionScript">
@@ -2173,7 +2205,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[CustomerAddress].[rowguid]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="42" />
+			<AttachedAnnotation Disambiguator="43" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_Product_ModifiedDate]">
 			<Property Name="DefaultExpressionScript">
@@ -2189,7 +2221,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Product].[ModifiedDate]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="47" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="48" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_Product_rowguid]">
 			<Property Name="DefaultExpressionScript">
@@ -2205,7 +2237,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Product].[rowguid]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="48" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="49" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_ProductCategory_ModifiedDate]">
 			<Property Name="DefaultExpressionScript">
@@ -2221,7 +2253,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductCategory].[ModifiedDate]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="49" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="50" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_ProductCategory_rowguid]">
 			<Property Name="DefaultExpressionScript">
@@ -2237,7 +2269,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductCategory].[rowguid]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="50" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="51" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_ProductDescription_ModifiedDate]">
 			<Property Name="DefaultExpressionScript">
@@ -2253,7 +2285,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductDescription].[ModifiedDate]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="51" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="52" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_ProductDescription_rowguid]">
 			<Property Name="DefaultExpressionScript">
@@ -2269,7 +2301,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductDescription].[rowguid]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="52" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="53" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_ProductModel_ModifiedDate]">
 			<Property Name="DefaultExpressionScript">
@@ -2285,7 +2317,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductModel].[ModifiedDate]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="53" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="54" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_ProductModel_rowguid]">
 			<Property Name="DefaultExpressionScript">
@@ -2301,7 +2333,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductModel].[rowguid]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="54" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="55" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_ProductModelProductDescription_ModifiedDate]">
 			<Property Name="DefaultExpressionScript">
@@ -2317,7 +2349,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductModelProductDescription].[ModifiedDate]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="55" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="56" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_ProductModelProductDescription_rowguid]">
 			<Property Name="DefaultExpressionScript">
@@ -2333,7 +2365,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductModelProductDescription].[rowguid]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="56" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="57" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_SalesOrderDetail_ModifiedDate]">
 			<Property Name="DefaultExpressionScript">
@@ -2349,7 +2381,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderDetail].[ModifiedDate]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="57" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="58" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_SalesOrderDetail_rowguid]">
 			<Property Name="DefaultExpressionScript">
@@ -2365,7 +2397,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderDetail].[rowguid]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="58" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="59" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_SalesOrderDetail_UnitPriceDiscount]">
 			<Property Name="DefaultExpressionScript">
@@ -2381,7 +2413,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderDetail].[UnitPriceDiscount]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="59" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="60" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_SalesOrderHeader_Freight]">
 			<Property Name="DefaultExpressionScript">
@@ -2397,7 +2429,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader].[Freight]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="60" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="61" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_SalesOrderHeader_ModifiedDate]">
 			<Property Name="DefaultExpressionScript">
@@ -2413,7 +2445,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader].[ModifiedDate]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="61" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="62" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_SalesOrderHeader_OnlineOrderFlag]">
 			<Property Name="DefaultExpressionScript">
@@ -2429,7 +2461,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader].[OnlineOrderFlag]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="62" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="63" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_SalesOrderHeader_OrderDate]">
 			<Property Name="DefaultExpressionScript">
@@ -2445,7 +2477,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader].[OrderDate]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="63" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="64" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_SalesOrderHeader_RevisionNumber]">
 			<Property Name="DefaultExpressionScript">
@@ -2461,7 +2493,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader].[RevisionNumber]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="64" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="65" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_SalesOrderHeader_rowguid]">
 			<Property Name="DefaultExpressionScript">
@@ -2477,7 +2509,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader].[rowguid]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="65" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="66" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_SalesOrderHeader_Status]">
 			<Property Name="DefaultExpressionScript">
@@ -2493,7 +2525,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader].[Status]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="66" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="67" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_SalesOrderHeader_SubTotal]">
 			<Property Name="DefaultExpressionScript">
@@ -2509,7 +2541,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader].[SubTotal]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="67" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="68" />
 		</Element>
 		<Element Type="SqlDefaultConstraint" Name="[SalesLT].[DF_SalesOrderHeader_TaxAmt]">
 			<Property Name="DefaultExpressionScript">
@@ -2525,7 +2557,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader].[TaxAmt]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="68" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="69" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[SalesLT].[FK_CustomerAddress_Address_AddressID]">
 			<Relationship Name="Columns">
@@ -2548,7 +2580,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Address]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="45" />
+			<AttachedAnnotation Disambiguator="46" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[SalesLT].[FK_CustomerAddress_Customer_CustomerID]">
 			<Relationship Name="Columns">
@@ -2571,7 +2603,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Customer]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="46" />
+			<AttachedAnnotation Disambiguator="47" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[SalesLT].[FK_Product_ProductCategory_ProductCategoryID]">
 			<Relationship Name="Columns">
@@ -2594,7 +2626,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductCategory]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="69" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="70" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[SalesLT].[FK_Product_ProductModel_ProductModelID]">
 			<Relationship Name="Columns">
@@ -2617,7 +2649,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductModel]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="70" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="71" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[SalesLT].[FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID]">
 			<Relationship Name="Columns">
@@ -2640,7 +2672,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductCategory]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="71" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="72" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[SalesLT].[FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID]">
 			<Relationship Name="Columns">
@@ -2663,7 +2695,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductDescription]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="72" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="73" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[SalesLT].[FK_ProductModelProductDescription_ProductModel_ProductModelID]">
 			<Relationship Name="Columns">
@@ -2686,7 +2718,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductModel]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="73" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="74" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[SalesLT].[FK_SalesOrderDetail_Product_ProductID]">
 			<Relationship Name="Columns">
@@ -2709,7 +2741,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Product]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="74" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="75" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[SalesLT].[FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID]">
 			<Property Name="OnDeleteAction" Value="1" />
@@ -2733,7 +2765,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="75" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="76" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[SalesLT].[FK_SalesOrderHeader_Address_BillTo_AddressID]">
 			<Relationship Name="Columns">
@@ -2756,7 +2788,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Address]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="76" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="77" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[SalesLT].[FK_SalesOrderHeader_Address_ShipTo_AddressID]">
 			<Relationship Name="Columns">
@@ -2779,7 +2811,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Address]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="77" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="78" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[SalesLT].[FK_SalesOrderHeader_Customer_CustomerID]">
 			<Relationship Name="Columns">
@@ -2802,7 +2834,76 @@ END;]]></Value>
 					<References Name="[SalesLT].[Customer]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="78" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="79" />
+		</Element>
+		<Element Type="SqlScalarFunction" Name="[SalesLT].[GetAddressContinent]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[SalesLT].[Address]" />
+				</Entry>
+				<Entry>
+					<References Name="[SalesLT].[Address].[ContinentName]" />
+				</Entry>
+				<Entry>
+					<References Name="[SalesLT].[Address].[AddressID]" />
+				</Entry>
+				<Entry>
+					<References Name="[SalesLT].[GetAddressContinent].[@AddressID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="FunctionBody">
+				<Entry>
+					<Element Type="SqlScriptFunctionImplementation">
+						<Property Name="BodyScript">
+							<Value><![CDATA[
+BEGIN
+	RETURN (SELECT TOP 1 [ContinentName] FROM [SalesLT].[Address] WHERE [AddressID] = @AddressID);
+END]]></Value>
+						</Property>
+						<Annotation Type="SysCommentsObjectAnnotation">
+							<Property Name="Length" Value="205" />
+							<Property Name="StartLine" Value="1" />
+							<Property Name="StartColumn" Value="1" />
+							<Property Name="HeaderContents" Value="CREATE FUNCTION [SalesLT].[GetAddressContinent]&#xD;&#xA;(&#xD;&#xA;&#x9;@AddressID INT&#xD;&#xA;)&#xD;&#xA;RETURNS NVARCHAR(30)&#xD;&#xA;AS" />
+						</Annotation>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[SalesLT].[GetAddressContinent].[@AddressID]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References Name="[SalesLT]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Type">
+				<Entry>
+					<Element Type="SqlTypeSpecifier">
+						<Property Name="Length" Value="30" />
+						<Relationship Name="Type">
+							<Entry>
+								<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
 		</Element>
 		<Element Type="SqlDmlTrigger" Name="[SalesLT].[iduSalesOrderDetail]">
 			<Property Name="IsInsertTrigger" Value="True" />
@@ -2927,7 +3028,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Address]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="9" />
+			<AttachedAnnotation Disambiguator="10" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[SalesLT].[PK_Customer_CustomerID]">
 			<Relationship Name="ColumnSpecifications">
@@ -2946,7 +3047,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Customer]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="41" />
+			<AttachedAnnotation Disambiguator="42" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[SalesLT].[PK_CustomerAddress_CustomerID_AddressID]">
 			<Relationship Name="ColumnSpecifications">
@@ -2974,7 +3075,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[CustomerAddress]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="44" />
+			<AttachedAnnotation Disambiguator="45" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[SalesLT].[PK_Product_ProductID]">
 			<Relationship Name="ColumnSpecifications">
@@ -2993,7 +3094,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[Product]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="79" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="80" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[SalesLT].[PK_ProductCategory_ProductCategoryID]">
 			<Relationship Name="ColumnSpecifications">
@@ -3012,7 +3113,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductCategory]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="80" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="81" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[SalesLT].[PK_ProductDescription_ProductDescriptionID]">
 			<Relationship Name="ColumnSpecifications">
@@ -3031,7 +3132,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductDescription]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="81" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="82" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[SalesLT].[PK_ProductModel_ProductModelID]">
 			<Relationship Name="ColumnSpecifications">
@@ -3050,7 +3151,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductModel]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="82" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="83" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[SalesLT].[PK_ProductModelProductDescription_ProductModelID_ProductDescriptionID_Culture]">
 			<Relationship Name="ColumnSpecifications">
@@ -3087,7 +3188,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[ProductModelProductDescription]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="83" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="84" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[SalesLT].[PK_SalesOrderDetail_SalesOrderID_SalesOrderDetailID]">
 			<Relationship Name="ColumnSpecifications">
@@ -3115,7 +3216,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderDetail]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="84" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="85" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[SalesLT].[PK_SalesOrderHeader_SalesOrderID]">
 			<Relationship Name="ColumnSpecifications">
@@ -3134,7 +3235,7 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="85" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="86" />
 		</Element>
 		<Element Type="SqlTable" Name="[SalesLT].[Product]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -3393,7 +3494,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="48" />
+						<AttachedAnnotation Disambiguator="49" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -3410,7 +3511,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="47" />
+						<AttachedAnnotation Disambiguator="48" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -3419,16 +3520,16 @@ END;]]></Value>
 					<References Name="[SalesLT]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="79" />
-			<AttachedAnnotation Disambiguator="25" />
+			<AttachedAnnotation Disambiguator="80" />
 			<AttachedAnnotation Disambiguator="26" />
 			<AttachedAnnotation Disambiguator="27" />
 			<AttachedAnnotation Disambiguator="28" />
-			<AttachedAnnotation Disambiguator="69" />
+			<AttachedAnnotation Disambiguator="29" />
 			<AttachedAnnotation Disambiguator="70" />
-			<AttachedAnnotation Disambiguator="13" />
+			<AttachedAnnotation Disambiguator="71" />
 			<AttachedAnnotation Disambiguator="14" />
 			<AttachedAnnotation Disambiguator="15" />
+			<AttachedAnnotation Disambiguator="16" />
 		</Element>
 		<Element Type="SqlTable" Name="[SalesLT].[ProductCategory]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -3496,7 +3597,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="50" />
+						<AttachedAnnotation Disambiguator="51" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -3513,7 +3614,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="49" />
+						<AttachedAnnotation Disambiguator="50" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -3522,10 +3623,10 @@ END;]]></Value>
 					<References Name="[SalesLT]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="80" />
-			<AttachedAnnotation Disambiguator="71" />
-			<AttachedAnnotation Disambiguator="16" />
+			<AttachedAnnotation Disambiguator="81" />
+			<AttachedAnnotation Disambiguator="72" />
 			<AttachedAnnotation Disambiguator="17" />
+			<AttachedAnnotation Disambiguator="18" />
 		</Element>
 		<Element Type="SqlTable" Name="[SalesLT].[ProductDescription]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -3579,7 +3680,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="52" />
+						<AttachedAnnotation Disambiguator="53" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -3596,7 +3697,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="51" />
+						<AttachedAnnotation Disambiguator="52" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -3605,8 +3706,8 @@ END;]]></Value>
 					<References Name="[SalesLT]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="81" />
-			<AttachedAnnotation Disambiguator="18" />
+			<AttachedAnnotation Disambiguator="82" />
+			<AttachedAnnotation Disambiguator="19" />
 		</Element>
 		<Element Type="SqlXmlSchemaCollection" Name="[SalesLT].[ProductDescriptionSchemaCollection]">
 			<Property Name="SchemaExpression">
@@ -3801,7 +3902,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="54" />
+						<AttachedAnnotation Disambiguator="55" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -3818,7 +3919,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="53" />
+						<AttachedAnnotation Disambiguator="54" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -3827,9 +3928,9 @@ END;]]></Value>
 					<References Name="[SalesLT]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="82" />
-			<AttachedAnnotation Disambiguator="19" />
+			<AttachedAnnotation Disambiguator="83" />
 			<AttachedAnnotation Disambiguator="20" />
+			<AttachedAnnotation Disambiguator="21" />
 		</Element>
 		<Element Type="SqlXmlIndex" Name="[SalesLT].[ProductModel].[PXML_ProductModel_CatalogDescription]">
 			<Property Name="IsPrimary" Value="True" />
@@ -3911,7 +4012,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="56" />
+						<AttachedAnnotation Disambiguator="57" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -3928,7 +4029,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="55" />
+						<AttachedAnnotation Disambiguator="56" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -3937,10 +4038,10 @@ END;]]></Value>
 					<References Name="[SalesLT]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="83" />
-			<AttachedAnnotation Disambiguator="72" />
+			<AttachedAnnotation Disambiguator="84" />
 			<AttachedAnnotation Disambiguator="73" />
-			<AttachedAnnotation Disambiguator="21" />
+			<AttachedAnnotation Disambiguator="74" />
+			<AttachedAnnotation Disambiguator="22" />
 		</Element>
 		<Element Type="SqlTable" Name="[SalesLT].[SalesOrderDetail]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -4040,7 +4141,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="59" />
+						<AttachedAnnotation Disambiguator="60" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -4076,7 +4177,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="58" />
+						<AttachedAnnotation Disambiguator="59" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -4093,7 +4194,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="57" />
+						<AttachedAnnotation Disambiguator="58" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -4102,13 +4203,13 @@ END;]]></Value>
 					<References Name="[SalesLT]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="84" />
-			<AttachedAnnotation Disambiguator="29" />
+			<AttachedAnnotation Disambiguator="85" />
 			<AttachedAnnotation Disambiguator="30" />
 			<AttachedAnnotation Disambiguator="31" />
-			<AttachedAnnotation Disambiguator="74" />
+			<AttachedAnnotation Disambiguator="32" />
 			<AttachedAnnotation Disambiguator="75" />
-			<AttachedAnnotation Disambiguator="22" />
+			<AttachedAnnotation Disambiguator="76" />
+			<AttachedAnnotation Disambiguator="23" />
 		</Element>
 		<Element Type="SqlIndex" Name="[SalesLT].[SalesOrderDetail].[IX_SalesOrderDetail_ProductID]">
 			<Relationship Name="ColumnSpecifications">
@@ -4163,7 +4264,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="64" />
+						<AttachedAnnotation Disambiguator="65" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -4180,7 +4281,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="63" />
+						<AttachedAnnotation Disambiguator="64" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -4228,7 +4329,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="66" />
+						<AttachedAnnotation Disambiguator="67" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -4245,7 +4346,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="62" />
+						<AttachedAnnotation Disambiguator="63" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -4386,7 +4487,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="67" />
+						<AttachedAnnotation Disambiguator="68" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -4403,7 +4504,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="68" />
+						<AttachedAnnotation Disambiguator="69" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -4420,7 +4521,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="60" />
+						<AttachedAnnotation Disambiguator="61" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -4472,7 +4573,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="65" />
+						<AttachedAnnotation Disambiguator="66" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -4489,7 +4590,7 @@ END;]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="61" />
+						<AttachedAnnotation Disambiguator="62" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -4498,18 +4599,18 @@ END;]]></Value>
 					<References Name="[SalesLT]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="85" />
-			<AttachedAnnotation Disambiguator="32" />
+			<AttachedAnnotation Disambiguator="86" />
 			<AttachedAnnotation Disambiguator="33" />
 			<AttachedAnnotation Disambiguator="34" />
 			<AttachedAnnotation Disambiguator="35" />
 			<AttachedAnnotation Disambiguator="36" />
 			<AttachedAnnotation Disambiguator="37" />
-			<AttachedAnnotation Disambiguator="76" />
+			<AttachedAnnotation Disambiguator="38" />
 			<AttachedAnnotation Disambiguator="77" />
 			<AttachedAnnotation Disambiguator="78" />
-			<AttachedAnnotation Disambiguator="23" />
+			<AttachedAnnotation Disambiguator="79" />
 			<AttachedAnnotation Disambiguator="24" />
+			<AttachedAnnotation Disambiguator="25" />
 		</Element>
 		<Element Type="SqlIndex" Name="[SalesLT].[SalesOrderHeader].[IX_SalesOrderHeader_CustomerID]">
 			<Relationship Name="ColumnSpecifications">
@@ -4528,6 +4629,57 @@ END;]]></Value>
 					<References Name="[SalesLT].[SalesOrderHeader]" />
 				</Entry>
 			</Relationship>
+		</Element>
+		<Element Type="SqlProcedure" Name="[SalesLT].[TestProc]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN
+	DECLARE @Continent NVARCHAR(30);
+	SET @Continent = [SalesLT].GetAddressContinent(@AddressID);
+
+	SELECT @Continent AS [Continent]
+END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+				</Entry>
+				<Entry>
+					<References Name="[SalesLT].[GetAddressContinent]" />
+				</Entry>
+				<Entry>
+					<References Name="[SalesLT].[TestProc].[@AddressID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[SalesLT].[TestProc].[@AddressID]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References Name="[SalesLT]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="204" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [SalesLT].[TestProc]&#xD;&#xA;&#x9;@AddressID INT&#xD;&#xA;AS" />
+			</Annotation>
 		</Element>
 		<Element Type="SqlDmlTrigger" Name="[SalesLT].[uSalesOrderHeader]">
 			<Property Name="IsUpdateTrigger" Value="True" />
