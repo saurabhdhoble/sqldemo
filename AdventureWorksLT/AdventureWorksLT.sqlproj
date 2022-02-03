@@ -6,7 +6,7 @@
     <Name>AdventureWorksLT</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{9753962c-cf5a-4e97-a092-fb9545c9e8ef}</ProjectGuid>
+    <ProjectGuid>{2e1c78af-5ff9-4c51-b1fa-d4d88bb2aac8}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
@@ -47,7 +47,6 @@
     <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <TreatTSqlWarningsAsErrors>True</TreatTSqlWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
@@ -100,12 +99,5 @@
     <Build Include="Security\SalesLT.sql" />
     <Build Include="SalesLT\XMLSchemaCollections\ProductDescriptionSchemaCollection.sql" />
     <Build Include="ExtendedProperties.sql" />
-    <Build Include="dbo\User Defined Types\Continent.sql" />
-    <Build Include="dbo\Functions\GetAddressContinent.sql" />
-    <Build Include="dbo\Stored Procedures\TestProc.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="AdventureWorksLT_DockerImage.publish.xml" />
-    <None Include="AdventureWorksLT_Production.publish.xml" />
   </ItemGroup>
 </Project>
