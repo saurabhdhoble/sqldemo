@@ -9,6 +9,6 @@
     <ScriptDatabaseOptions>False</ScriptDatabaseOptions>
     <ExcludeApplicationRoles>True</ExcludeApplicationRoles>
     <ExcludeUsers>True</ExcludeUsers>
-    <TargetConnectionString>Data Source=database-1.ckxqbgcnhqkt.us-east-1.rds.amazonaws.com;Persist Security Info=True;User ID=admin;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False</TargetConnectionString>
+    <TargetConnectionString>Data Source=database-1.ckxqbgcnhqkt.us-east-1.rds.amazonaws.com;Persist Security Info=True;User ID=admin;Password=$#test123Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False</TargetConnectionString>
   </PropertyGroup>
 </Project>

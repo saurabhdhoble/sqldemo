@@ -110,5 +110,7 @@
   <ItemGroup>
     <None Include="AdventureWorksLT.publish.xml" />
     <None Include="AdventureWorksLT_DockerImage.publish.xml" />
+    <None Include="AdventureWorksLT_1.publish.xml" />
+    <None Include="AdventureWorksLT_Production.publish.xml" />
   </ItemGroup>
 </Project>
