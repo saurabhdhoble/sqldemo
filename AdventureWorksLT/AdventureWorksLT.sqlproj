@@ -85,8 +85,6 @@
     <Build Include="SalesLT\Views\vProductAndDescription.sql" />
     <Build Include="SalesLT\Views\vProductModelCatalogDescription.sql" />
     <Build Include="SalesLT\Views\vGetAllCategories.sql" />
-    <Build Include="Security\admin.sql" />
-    <Build Include="Security\RoleMemberships.sql" />
     <Build Include="dbo\Functions\ufnGetSalesOrderStatusText.sql" />
     <Build Include="dbo\Functions\ufnGetAllCategories.sql" />
     <Build Include="dbo\Functions\ufnGetCustomerInformation.sql" />
