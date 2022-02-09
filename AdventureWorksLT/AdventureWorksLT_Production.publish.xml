@@ -4,7 +4,7 @@
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseName>AdventureWorksLT_Production</TargetDatabaseName>
     <DeployScriptFileName>AdventureWorksLT.sql</DeployScriptFileName>
-    <TargetConnectionString>Data Source=database-1.ckxqbgcnhqkt.us-east-1.rds.amazonaws.com;Persist Security Info=True;User ID=admin;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False</TargetConnectionString>
+    <TargetConnectionString>Data Source=database-1.ckxqbgcnhqkt.us-east-1.rds.amazonaws.com;Password=$#test123;Persist Security Info=True;User ID=admin;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False</TargetConnectionString>
     <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
     <ScriptDatabaseOptions>False</ScriptDatabaseOptions>
     <ProfileVersionNumber>1</ProfileVersionNumber>
