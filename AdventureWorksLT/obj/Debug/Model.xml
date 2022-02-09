@@ -782,6 +782,27 @@ END;]]></Value>
 				</Entry>
 			</Relationship>
 		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[UnplannedProc]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN
+	SELECT 1;
+END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="2" />
+				<Property Name="Length" Value="64" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;CREATE PROCEDURE dbo.UnplannedProc&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[uspLogError]">
 			<Property Name="BodyScript">
 				<Value><![CDATA[                               -- by uspLogError in the ErrorLog table
