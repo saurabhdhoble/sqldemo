@@ -1,6 +1,0 @@
-﻿
-CREATE PROCEDURE dbo.UnplannedProc
-AS
-BEGIN
-	SELECT 1;
-END
