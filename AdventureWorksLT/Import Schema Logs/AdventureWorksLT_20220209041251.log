@@ -1,0 +1,87 @@
+2/8/2022 11:12:51 PM	This log contains information about the import schema operation into project 'AdventureWorksLT' on computer 'DESKTOP-4RLFJ7J' by user 'Swati'.
+2/8/2022 11:12:51 PM	Import of database schema has started.
+2/8/2022 11:13:06 PM	Gathering database credentials
+2/8/2022 11:13:06 PM	Gathering database options
+2/8/2022 11:13:06 PM	Gathering generic database scoped configuration option
+2/8/2022 11:13:06 PM	Gathering users
+2/8/2022 11:13:06 PM	Gathering roles
+2/8/2022 11:13:06 PM	Gathering application roles
+2/8/2022 11:13:06 PM	Gathering role memberships
+2/8/2022 11:13:06 PM	Gathering filegroups
+2/8/2022 11:13:07 PM	Gathering files
+2/8/2022 11:13:07 PM	Gathering full-text catalogs
+2/8/2022 11:13:07 PM	Gathering assemblies
+2/8/2022 11:13:07 PM	Gathering certificates
+2/8/2022 11:13:07 PM	Gathering asymmetric keys
+2/8/2022 11:13:07 PM	Gathering symmetric keys
+2/8/2022 11:13:07 PM	Gathering encrypted symmetric keys
+2/8/2022 11:13:07 PM	Gathering database encryption keys
+2/8/2022 11:13:07 PM	Gathering schemas
+2/8/2022 11:13:07 PM	Gathering XML schema collections
+2/8/2022 11:13:07 PM	Gathering user-defined data types
+2/8/2022 11:13:07 PM	Gathering user-defined types
+2/8/2022 11:13:07 PM	Gathering table types
+2/8/2022 11:13:07 PM	Gathering unique keys for table types
+2/8/2022 11:13:07 PM	Gathering primary keys for table types
+2/8/2022 11:13:07 PM	Gathering indexes for table types
+2/8/2022 11:13:07 PM	Gathering check constraints for table types
+2/8/2022 11:13:07 PM	Gathering default constraints for table types
+2/8/2022 11:13:07 PM	Gathering partition functions
+2/8/2022 11:13:07 PM	Gathering partition schemes
+2/8/2022 11:13:07 PM	Gathering functions
+2/8/2022 11:13:08 PM	Gathering encrypted functions
+2/8/2022 11:13:08 PM	Gathering aggregates
+2/8/2022 11:13:08 PM	Gathering procedures
+2/8/2022 11:13:08 PM	Gathering encrypted procedures
+2/8/2022 11:13:08 PM	Gathering tables
+2/8/2022 11:13:08 PM	Gathering primary keys
+2/8/2022 11:13:08 PM	Gathering unique constraints
+2/8/2022 11:13:08 PM	Gathering foreign keys
+2/8/2022 11:13:08 PM	Gathering default constraints
+2/8/2022 11:13:08 PM	Gathering check constraints
+2/8/2022 11:13:08 PM	Gathering views
+2/8/2022 11:13:08 PM	Gathering encrypted views
+2/8/2022 11:13:08 PM	Gathering indexes
+2/8/2022 11:13:08 PM	Gathering statistics
+2/8/2022 11:13:08 PM	Gathering full-text index stoplists
+2/8/2022 11:13:08 PM	Gathering search property lists
+2/8/2022 11:13:08 PM	Gathering search properties
+2/8/2022 11:13:08 PM	Gathering full-text indexes
+2/8/2022 11:13:08 PM	Gathering column store indexes
+2/8/2022 11:13:08 PM	Gathering spatial indexes
+2/8/2022 11:13:08 PM	Gathering XML indexes
+2/8/2022 11:13:08 PM	Gathering Selective XML indexes
+2/8/2022 11:13:08 PM	Gathering encrypted triggers
+2/8/2022 11:13:08 PM	Gathering triggers
+2/8/2022 11:13:08 PM	Gathering encrypted and clr ddl triggers
+2/8/2022 11:13:08 PM	Gathering ddl triggers
+2/8/2022 11:13:08 PM	Creating edge constraints
+2/8/2022 11:13:08 PM	Gathering synonyms
+2/8/2022 11:13:08 PM	Gathering defaults
+2/8/2022 11:13:08 PM	Gathering data constraint uddt bindings
+2/8/2022 11:13:08 PM	Gathering rules
+2/8/2022 11:13:08 PM	Gathering data constraint uddt bindings
+2/8/2022 11:13:08 PM	Gathering message types
+2/8/2022 11:13:08 PM	Gathering queues
+2/8/2022 11:13:08 PM	Gathering contracts
+2/8/2022 11:13:08 PM	Gathering services
+2/8/2022 11:13:09 PM	Gathering routes
+2/8/2022 11:13:09 PM	Gathering event notifications
+2/8/2022 11:13:09 PM	Gathering remote service bindings
+2/8/2022 11:13:09 PM	Gathering broker priorities
+2/8/2022 11:13:09 PM	Gathering database audit specifications
+2/8/2022 11:13:09 PM	Gathering signatures
+2/8/2022 11:13:09 PM	Gathering data compression options
+2/8/2022 11:13:09 PM	Gathering sequence types
+2/8/2022 11:13:09 PM	Gathering security policies
+2/8/2022 11:13:09 PM	Gather column encryption keys
+2/8/2022 11:13:09 PM	Gathering column master keys
+2/8/2022 11:13:09 PM	Gathering external data sources
+2/8/2022 11:13:09 PM	Gathering external file formats
+2/8/2022 11:13:09 PM	Gathering external tables
+2/8/2022 11:13:09 PM	Gathering extended properties
+2/8/2022 11:13:10 PM	Scanning project for duplicate elements
+2/8/2022 11:13:10 PM	Finished duplicate element processing
+2/8/2022 11:13:21 PM	Finished importing database.
+2/8/2022 11:13:21 PM	A summary of the import was saved to the following location: C:\Git\sqldemo\AdventureWorksLT\Import Schema Logs\AdventureWorksLT_20220209041251.log
+2/8/2022 11:13:21 PM	Click Finish to continue...
