@@ -3040,10 +3040,10 @@ END;]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Offset" Value="1699" />
+				<Property Name="Offset" Value="1738" />
 				<Property Name="CreateOffset" Value="4" />
 				<Property Name="Length" Value="1375" />
-				<Property Name="StartLine" Value="27" />
+				<Property Name="StartLine" Value="28" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="&#xD;&#xA;&#xD;&#xA;CREATE TRIGGER [SalesLT].[iduSalesOrderDetail] ON [SalesLT].[SalesOrderDetail] &#xD;&#xA;AFTER INSERT, DELETE, UPDATE AS" />
 			</Annotation>
@@ -4232,6 +4232,21 @@ END;]]></Value>
 							</Entry>
 						</Relationship>
 						<AttachedAnnotation Disambiguator="58" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[SalesLT].[SalesOrderDetail].[SaurabhTestColumn]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
 					</Element>
 				</Entry>
 			</Relationship>
